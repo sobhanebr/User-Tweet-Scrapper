@@ -14,6 +14,8 @@ type Proxy struct {
 }
 
 func extractProxies() []Proxy {
+	const proxyServer string = "https://free-proxy-list.net/"
+
 	var proxies []Proxy
 
 	collyCollector := colly.NewCollector(
@@ -46,7 +48,7 @@ func extractProxies() []Proxy {
 		})
 	})
 
-	err2 := collyCollector.Visit("https://free-proxy-list.net/")
+	err2 := collyCollector.Visit(proxyServer)
 	if err2 != nil {
 		log.Fatal(err2)
 		return nil
